@@ -19,7 +19,7 @@
 #This script will be called by CLAM and will run with the current working directory set to the specified project directory
 
 #This is the shell version of the system wrapper script. You can also use the
-#Python version, which is generally more powerful as it parses the XML settings 
+#Python version, which is generally more powerful as it parses the XML settings
 #file for you, unlike this template. Using Python is recommended for more
 #complex webservices and for additional security.
 
@@ -29,6 +29,7 @@ INPUTDIRECTORY=$2
 OUTPUTDIRECTORY=$3
 SCRATCHDIRECTORY=$4
 RESOURCESDIRECTORY=$5
+WEBSERVICEDIR=$6
 
 mkdir -p $SCRATCHDIRECTORY $RESOURCESDIRECTORY
 
@@ -53,7 +54,7 @@ echo "Starting..." >> $STATUSFILE
 #Loop over all input files, here we assume they are txt files, adapt to your situation:
 #Invoke your actual system, whatever it may be, adapt accordingly
 
-../scripts/kaldi_align.sh $INPUTDIRECTORY $SCRATCHDIRECTORY $RESOURCESDIRECTORY $OUTPUTDIRECTORY
+$WEBSERVICEDIR/kaldi_align.sh $INPUTDIRECTORY $SCRATCHDIRECTORY $RESOURCESDIRECTORY $OUTPUTDIRECTORY
 
 echo "Done." >> $STATUSFILE
 

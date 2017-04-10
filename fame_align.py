@@ -29,6 +29,7 @@ from clam.common.formats import WaveAudioFormat, OggAudioFormat, MP3AudioFormat
 import clam
 import sys
 import os
+from base64 import b64decode as D
 
 REQUIRE_VERSION = 0.99
 
@@ -50,11 +51,10 @@ SYSTEM_DESCRIPTION = "This webservice provides you a ctm file with word alignmen
 
 # ================ Server specific configuration for CLAM ===============
 host = os.uname()[1]
-if 'VIRTUAL_ENV' in os.environ and os.path.exists(os.environ['VIRTUAL_ENV'] +'/bin/fame_align'):
+if 'VIRTUAL_ENV' in os.environ:
     # Virtual Environment (LaMachine)
     ROOT = os.environ['VIRTUAL_ENV'] + "/fame_align.clam/"
     PORT = 8802
-    BINDIR = os.environ['VIRTUAL_ENV'] + '/bin/'
 
     if host == 'applejack': #configuration for server in Nijmegen
         HOST = "webservices-lst.science.ru.nl"
@@ -82,16 +82,7 @@ if 'VIRTUAL_ENV' in os.environ and os.path.exists(os.environ['VIRTUAL_ENV'] +'/b
         DIGESTOPAQUE = open(os.environ['CLAM_DIGESTOPAQUEFILE']).read().strip()
         SECRET_KEY = open(os.environ['CLAM_SECRETKEYFILE']).read().strip()
         ADMINS = ['proycon','antalb','wstoop']
-elif os.path.exists('/usr/bin/fame_align') and os.path.exists("/home/vagrant") and os.getuid() == 998:
-    # Virtual Machine (LaMachine)
-    ROOT = "/home/vagrant/fame_align.clam/"
-    PORT = 8802
-    BINDIR = '/usr/bin/'
-elif os.path.exists('/usr/bin/fame_align') and os.getuid() == 0 and os.path.exists('/etc/arch-release'):
-    # Docker (LaMachine)
-    ROOT = "/clamdata/fame_align.clam/"
-    PORT = 8802
-    BINDIR = '/usr/bin/'
+        MAXLOADAVG = 16.0
 elif host == "hostnameofyoursystem":
     #**** adapt hostname and add custom configuration for your system here ****
     raise NotImplementedError
@@ -120,11 +111,11 @@ ADMINS = None #List of usernames that are administrator and can access the admin
 REQUIREMEMORY = 100
 
 #Maximum load average at which processes are still started (first number reported by 'uptime'). Set to 0 to disable this check (not recommended)
-MAXLOADAVG = 10.0
+#MAXLOADAVG = 10.0
 
 #Minimum amount of free diskspace in MB. Set to 0 to disable this check (not recommended)
-DISK = '/dev/sda1' #set this to the disk where ROOT is on
-MINDISKSPACE = 100
+#DISK = '/dev/sda1' #set this to the disk where ROOT is on
+#MINDISKSPACE = 100
 
 #The amount of diskspace a user may use (in MB), this is a soft quota which can be exceeded, but creation of new projects is blocked until usage drops below the quota again
 #USERQUOTA = 100
@@ -217,10 +208,10 @@ PROFILES = [
 #     $PARAMETERS      - List of chosen parameters, using the specified flags
 #
 # COMMAND = WEBSERVICEDIR + "/fame_align_wrapper.sh $DATAFILE $STATUSFILE $OUTPUTDIRECTORY"
-SCRATCHDIRECTORY='./scratch' 
-RESOURCESDIRECTORY=' ./resources' 
+SCRATCHDIRECTORY='./scratch' #note: this will be relative to the project directory for each clam project and created in the wrapper
+RESOURCESDIRECTORY=' ./resources'
 #Or for the shell variant:
-COMMAND = WEBSERVICEDIR + "/fame_align_wrapper.sh $STATUSFILE $INPUTDIRECTORY $OUTPUTDIRECTORY $SCRATCHDIRECTORY $RESOURCESDIRECTORY"
+COMMAND = WEBSERVICEDIR + "/fame_align_wrapper.sh $STATUSFILE $INPUTDIRECTORY $OUTPUTDIRECTORY $SCRATCHDIRECTORY $RESOURCESDIRECTORY " + WEBSERVICEDIR
 
 #Or if you only use the action paradigm, set COMMAND = None
 
