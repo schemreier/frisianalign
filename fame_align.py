@@ -58,7 +58,7 @@ if 'VIRTUAL_ENV' in os.environ:
 
     if host == 'applejack': #configuration for server in Nijmegen
         HOST = "webservices-lst.science.ru.nl"
-        URLPREFIX = 'fame_align'
+        URLPREFIX = 'frisianalign'
 
         if not 'CLAMTEST' in os.environ:
             ROOT = "/scratch2/www/webservices-lst/live/writable/fame_align/"
