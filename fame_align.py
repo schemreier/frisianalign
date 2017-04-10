@@ -208,10 +208,10 @@ PROFILES = [
 #     $PARAMETERS      - List of chosen parameters, using the specified flags
 #
 # COMMAND = WEBSERVICEDIR + "/fame_align_wrapper.sh $DATAFILE $STATUSFILE $OUTPUTDIRECTORY"
-SCRATCHDIRECTORY='./scratch' #note: this will be relative to the project directory for each clam project and created in the wrapper
-RESOURCESDIRECTORY=' ./resources'
+SCRATCHDIRECTORY='/scratch2/www/webservices-lst/test/writable/fame_align/scratch/' #note: this will be relative to the project directory for each clam project and created in the wrapper
+RESOURCESDIRECTORY=' ./scratch2/www/webservices-lst/test/writable/fame_align/resources/'
 #Or for the shell variant:
-COMMAND = WEBSERVICEDIR + "/fame_align_wrapper.sh $STATUSFILE $INPUTDIRECTORY $OUTPUTDIRECTORY $SCRATCHDIRECTORY $RESOURCESDIRECTORY " + WEBSERVICEDIR
+COMMAND = WEBSERVICEDIR + "/fame_align_wrapper.sh $STATUSFILE $INPUTDIRECTORY $OUTPUTDIRECTORY " + SCRATCHDIRECTORY +" "+RESOURCESDIRECTORY +" "+ WEBSERVICEDIR
 
 #Or if you only use the action paradigm, set COMMAND = None
 
