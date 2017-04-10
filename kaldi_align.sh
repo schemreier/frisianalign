@@ -1,6 +1,11 @@
 #!/bin/bash
 
-KALDI_main=??????
+if [[ $(hostname) == "applejack" ]]; then
+    KALDI_main=/vol/customopt/kaldi
+else
+    echo "Specify KALDI_main!" >&2
+    exit 2
+fi
 KALDI_root=$KALDI_main/egs/wsj/s5
 . $KALDI_root/path.sh
 . $KALDI_root/utils/parse_options.sh
@@ -20,7 +25,7 @@ for inputfile in $inputdir/*.wav; do
   echo "spk0000 $file_id" > $datadir/spk2utt
   text=$(cat $inputdir/${file_id}.txt)
   echo "$file_id $text" > $datadir/text
-  
+
   fbank=${datadir}
   $KALDI_root/steps/make_fbank.sh --nj 1 --cmd "run.pl" $fbank $fbank/log $fbank/data || exit 1;
   $KALDI_root/steps/compute_cmvn_stats.sh $fbank $fbank/log $fbank/data || exit 1;
