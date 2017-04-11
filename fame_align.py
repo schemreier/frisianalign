@@ -209,7 +209,7 @@ PROFILES = [
 #
 # COMMAND = WEBSERVICEDIR + "/fame_align_wrapper.sh $DATAFILE $STATUSFILE $OUTPUTDIRECTORY"
 SCRATCHDIRECTORY='/scratch2/www/webservices-lst/test/writable/fame_align/scratch/' #note: this will be relative to the project directory for each clam project and created in the wrapper
-RESOURCESDIRECTORY=' ./scratch2/www/webservices-lst/test/writable/fame_align/resources/'
+RESOURCESDIRECTORY='/scratch2/www/webservices-lst/test/writable/fame_align/resources/'
 #Or for the shell variant:
 COMMAND = WEBSERVICEDIR + "/fame_align_wrapper.sh $STATUSFILE $INPUTDIRECTORY $OUTPUTDIRECTORY " + SCRATCHDIRECTORY +" "+RESOURCESDIRECTORY +" "+ WEBSERVICEDIR
 
