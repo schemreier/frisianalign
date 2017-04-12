@@ -86,8 +86,6 @@ if 'VIRTUAL_ENV' in os.environ:
     elif host == "twist":
         DEBUG = True
         ROOT = "/vol/tensusers/eyilmaz/FAME/webservice/writable/"
-    #**** adapt hostname and add custom configuration for your system here ****
-    raise NotImplementedError
 else:
     raise Exception("I don't know where I'm running from! Got " + host)
 
