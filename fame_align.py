@@ -83,7 +83,9 @@ if 'VIRTUAL_ENV' in os.environ:
         SECRET_KEY = open(os.environ['CLAM_SECRETKEYFILE']).read().strip()
         ADMINS = ['proycon','antalb','wstoop']
         MAXLOADAVG = 16.0
-elif host == "hostnameofyoursystem":
+elif host == "twist":
+        DEBUG = True
+        ROOT = "/vol/tensusers/eyilmaz/FAME/webservice/writable/"
     #**** adapt hostname and add custom configuration for your system here ****
     raise NotImplementedError
 else:
@@ -208,8 +210,8 @@ PROFILES = [
 #     $PARAMETERS      - List of chosen parameters, using the specified flags
 #
 # COMMAND = WEBSERVICEDIR + "/fame_align_wrapper.sh $DATAFILE $STATUSFILE $OUTPUTDIRECTORY"
-SCRATCHDIRECTORY='/scratch2/www/webservices-lst/test/writable/fame_align/scratch/' #note: this will be relative to the project directory for each clam project and created in the wrapper
-RESOURCESDIRECTORY='/scratch2/www/webservices-lst/test/writable/fame_align/resources/'
+SCRATCHDIRECTORY=ROOT+'/scratch/' #note: this will be relative to the project directory for each clam project and created in the wrapper
+RESOURCESDIRECTORY=ROOT+'/resources/'
 #Or for the shell variant:
 COMMAND = WEBSERVICEDIR + "/fame_align_wrapper.sh $STATUSFILE $INPUTDIRECTORY $OUTPUTDIRECTORY " + SCRATCHDIRECTORY +" "+RESOURCESDIRECTORY +" "+ WEBSERVICEDIR
 
