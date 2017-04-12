@@ -27,9 +27,9 @@ for inputfile in $inputdir/*.wav; do
   echo "$file_id $text" > $datadir/text
 
   fbank=${datadir}
-  $KALDI_root/steps/make_fbank.sh --nj 1 --cmd "run.pl" $fbank $fbank/log $fbank/data || exit 1;
-  $KALDI_root/steps/compute_cmvn_stats.sh $fbank $fbank/log $fbank/data || exit 1;
-  $KALDI_root/steps/nnet/align.sh --nj 1 --cmd "run.pl" $datadir $langdir $modeldir $aligndir || exit 1;
-  $KALDI_root/steps/get_train_ctm.sh $datadir $langdir $aligndir || exit 1;
+  . $KALDI_root/steps/make_fbank.sh --nj 1 --cmd "run.pl" $fbank $fbank/log $fbank/data || exit 1;
+  . $KALDI_root/steps/compute_cmvn_stats.sh $fbank $fbank/log $fbank/data || exit 1;
+  . $KALDI_root/steps/nnet/align.sh --nj 1 --cmd "run.pl" $datadir $langdir $modeldir $aligndir || exit 1;
+  . $KALDI_root/steps/get_train_ctm.sh $datadir $langdir $aligndir || exit 1;
   cp $aligndir/ctm $outdir/${file_id}.ctm
 done
