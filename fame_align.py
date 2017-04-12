@@ -83,7 +83,7 @@ if 'VIRTUAL_ENV' in os.environ:
         SECRET_KEY = open(os.environ['CLAM_SECRETKEYFILE']).read().strip()
         ADMINS = ['proycon','antalb','wstoop']
         MAXLOADAVG = 16.0
-elif host == "twist":
+    elif host == "twist":
         DEBUG = True
         ROOT = "/vol/tensusers/eyilmaz/FAME/webservice/writable/"
     #**** adapt hostname and add custom configuration for your system here ****
