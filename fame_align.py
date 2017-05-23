@@ -167,7 +167,7 @@ PROFILES = [
             #MSWordConverter(id='docconv',label='Convert from MS Word Document'),
             extension='.wav',
             #filename='filename.txt',
-            unique=True #set unique=True if the user may only upload a file for this input template once. Set multi=True if you the user may upload multiple of such files
+            #unique=True #set unique=True if the user may only upload a file for this input template once. Set multi=True if you the user may upload multiple of such files
         ),
         InputTemplate('Transcription', PlainTextFormat,"Ground-truth transcription of the speech file",
             ChoiceParameter(id='encoding',name='Encoding',description='The character encoding of the file', choices=[('utf-8','UTF-8 (Unicode)'),('iso-8859-1','ISO-8859-1 (Latin1)'),('iso-8859-15','so-8859-15 (Latin9)'),('ascii','ASCII')]),

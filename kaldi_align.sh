@@ -17,15 +17,17 @@ datadir=$2/data
 langdir=$3/lang
 modeldir=$3/AM
 aligndir=$2/align
+tempdir=$2/temp
 outdir=$4
 
 mkdir -p $datadir
-
+mkdir -p $tempdir
 cd $KALDI_root
 
 for inputfile in $inputdir/*.wav; do
   file_id=$(basename "$inputfile" .wav)
-  echo "$file_id $inputfile" > $datadir/wav.scp
+  sox $inputfile -e signed-integer -r 16000 -b 16 $tempdir/${file_id}.wav
+  echo "$file_id $tempdir/${file_id}.wav" > $datadir/wav.scp
   echo "$file_id spk0000" > $datadir/utt2spk
   echo "spk0000 $file_id" > $datadir/spk2utt
   text=$(cat $inputdir/${file_id}.txt)
