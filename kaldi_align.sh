@@ -3,7 +3,7 @@
 if [[ $(hostname) == "applejack" ]]; then
     KALDI_main=/vol/customopt/kaldi
 elif [[ $(hostname) == "twist" ]]; then
-    KALDI_main=/vol/tensusers/eyilmaz/kaldi
+    KALDI_main=/vol/customopt/kaldi
 else
     echo "Specify KALDI_main!" >&2
     exit 2
@@ -22,6 +22,7 @@ outdir=$4
 
 mkdir -p $datadir
 mkdir -p $tempdir
+
 cd $KALDI_root
 
 for inputfile in $inputdir/*.wav; do
@@ -39,6 +40,8 @@ for inputfile in $inputdir/*.wav; do
   $KALDI_root/steps/nnet/align.sh --nj 1 --cmd "run.pl" $datadir $langdir $modeldir $aligndir || exit 1;
   $KALDI_root/steps/get_train_ctm.sh $datadir $langdir $aligndir || exit 1;
   cp $aligndir/ctm $outdir/${file_id}.ctm
+  $KALDI_main/webservice_scripts/ctm2tg.py $outdir/${file_id}.ctm $tempdir//${file_id}.wav
+
 done
 
 cd -
