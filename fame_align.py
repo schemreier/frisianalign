@@ -84,7 +84,7 @@ if 'VIRTUAL_ENV' in os.environ:
         ADMINS = ['proycon','antalb','wstoop']
         MAXLOADAVG = 16.0
     elif host == 'mlp01': #configuration for server in Nijmegen
-        HOST = "new.webservices-lst.science.ru.nl"
+        HOST = "webservices-lst.science.ru.nl"
         URLPREFIX = 'frisianalign'
 
         if not 'CLAMTEST' in os.environ:
