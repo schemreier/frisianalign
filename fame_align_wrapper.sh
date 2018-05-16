@@ -31,7 +31,7 @@ SCRATCHDIRECTORY=$4
 RESOURCESDIRECTORY=$5
 WEBSERVICEDIR=$6
 
-mkdir -p $SCRATCHDIRECTORY $RESOURCESDIRECTORY
+mkdir -p $SCRATCHDIRECTORY 
 
 #If $PARAMETERS was passed COMMAND= in the service configuration file, the remainder of the arguments are custom parameters for which you either need to do your own parsing, or you pass them directly to your application
 # PARAMETERS=${@:4}

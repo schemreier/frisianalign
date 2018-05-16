@@ -49,72 +49,10 @@ SYSTEM_NAME = "Frisian Forced Alignment Demo"
 #An informative description for this system (this should be fairly short, about one paragraph, and may not contain HTML)
 SYSTEM_DESCRIPTION = "This webservice provides you a ctm file with word alignments given a Frisian speech recording and its transcription."
 
-# ================ Server specific configuration for CLAM ===============
-host = os.uname()[1]
-if 'VIRTUAL_ENV' in os.environ:
-    # Virtual Environment (LaMachine)
-    ROOT = os.environ['VIRTUAL_ENV'] + "/fame_align.clam/"
-    PORT = 8802
+INTERFACEOPTIONS = "disableliveinput"
 
-    if host == 'applejack': #configuration for server in Nijmegen
-        HOST = "webservices-lst.science.ru.nl"
-        URLPREFIX = 'frisianalign'
-
-        if not 'CLAMTEST' in os.environ:
-            ROOT = "/scratch2/www/webservices-lst/live/writable/fame_align/"
-            if 'CLAMSSL' in os.environ:
-                PORT = 443
-            else:
-                PORT = 80
-        else:
-            ROOT = "/scratch2/www/webservices-lst/test/writable/fame_align/"
-            PORT = 81
-
-        USERS_MYSQL = {
-            'host': 'mysql-clamopener.science.ru.nl',
-            'user': 'clamopener',
-            'password': D(open(os.environ['CLAMOPENER_KEYFILE']).read().strip()),
-            'database': 'clamopener',
-            'table': 'clamusers_clamusers'
-        }
-        DEBUG = False
-        REALM = "WEBSERVICES-LST"
-        DIGESTOPAQUE = open(os.environ['CLAM_DIGESTOPAQUEFILE']).read().strip()
-        SECRET_KEY = open(os.environ['CLAM_SECRETKEYFILE']).read().strip()
-        ADMINS = ['proycon','antalb','wstoop']
-        MAXLOADAVG = 16.0
-    elif host == 'mlp01': #configuration for server in Nijmegen
-        HOST = "webservices-lst.science.ru.nl"
-        URLPREFIX = 'frisianalign'
-
-        if not 'CLAMTEST' in os.environ:
-            ROOT = "/var/www/webservices-lst/live/writable/fame_align/"
-            if 'CLAMSSL' in os.environ:
-                PORT = 443
-            else:
-                PORT = 80
-        else:
-            ROOT = "/var/www/webservices-lst/test/writable/fame_align/"
-            PORT = 81
-
-        USERS_MYSQL = {
-            'host': 'mysql-clamopener.science.ru.nl',
-            'user': 'clamopener',
-            'password': D(open(os.environ['CLAMOPENER_KEYFILE']).read().strip()),
-            'database': 'clamopener',
-            'table': 'clamusers_clamusers'
-        }
-        DEBUG = False
-        REALM = "WEBSERVICES-LST"
-        DIGESTOPAQUE = open(os.environ['CLAM_DIGESTOPAQUEFILE']).read().strip()
-        SECRET_KEY = open(os.environ['CLAM_SECRETKEYFILE']).read().strip()
-        ADMINS = ['proycon','antalb','wstoop']
-        MAXLOADAVG = 16.0
-    elif host == "twist":
-        DEBUG = True
-        ROOT = "/vol/tensusers/eyilmaz/FAME/webservice/writable/"
-else:
-    raise Exception("I don't know where I'm running from! Got " + host)
+#Load external configuration file
+loadconfig(__name__)
 
 # ======== AUTHENTICATION & SECURITY ===========
 
@@ -236,9 +174,9 @@ PROFILES = [
 #
 # COMMAND = WEBSERVICEDIR + "/fame_align_wrapper.sh $DATAFILE $STATUSFILE $OUTPUTDIRECTORY"
 SCRATCHDIRECTORY=ROOT+'/scratch/' #note: this will be relative to the project directory for each clam project and created in the wrapper
-RESOURCESDIRECTORY=ROOT+'/resources/'
+RESOURCEDIRECTORY=ROOT+'/resources/'
 #Or for the shell variant:
-COMMAND = WEBSERVICEDIR + "/fame_align_wrapper.sh $STATUSFILE $INPUTDIRECTORY $OUTPUTDIRECTORY " + SCRATCHDIRECTORY +" "+RESOURCESDIRECTORY +" "+ WEBSERVICEDIR
+COMMAND = WEBSERVICEDIR + "/fame_align_wrapper.sh $STATUSFILE $INPUTDIRECTORY $OUTPUTDIRECTORY " + SCRATCHDIRECTORY +" "+RESOURCEDIRECTORY +" "+ WEBSERVICEDIR
 
 #Or if you only use the action paradigm, set COMMAND = None
 
