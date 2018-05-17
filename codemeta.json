@@ -1,0 +1,64 @@
+{
+    "@context": [
+        "https://doi.org/10.5063/schema/codemeta-2.0",
+        "http://schema.org",
+        {
+            "entryPoints": { "@reverse": "schema:actionApplication" },
+            "interfaceType": { "@id": "codemeta:interfaceType" }
+        }
+    ],
+    "@type": "SoftwareSourceCode",
+    "identifier": "frisianalign",
+    "name": "Frisian Forced Alignment Demo",
+    "version": "0.1",
+    "description": "This webservice provides you a ctm file with word alignments given a Frisian speech recording and its transcription.",
+    "license": "unknown",
+	"url": "https://github.com/schemreier/frisianalign",
+    "producer": {
+        "@id": "https://www.ru.nl/clst",
+        "@type": "Organization",
+        "name": "Centre for Language and Speech Technology",
+        "url": "https://www.ru.nl/clst",
+        "parentOrganization": {
+            "@id": "https://www.ru.nl/cls",
+            "@type": "Organization",
+            "name": "Centre for Language Studies",
+            "url": "https://www.ru.nl/cls",
+            "parentOrganization": {
+                "@id": "https://www.ru.nl",
+                "name": "Radboud University",
+                "@type": "Organization",
+                "url": "https://www.ru.nl",
+                "location": {
+                    "@type": "Place",
+                    "name": "Nijmegen"
+                }
+            }
+
+        }
+    },
+    "author": [
+		{
+			"@type": "Person",
+			"givenName": "Emre",
+			"familyName": "Yilmaz",
+			"email": "emre.yilmaz@let.ru.nl",
+			"affiliation": { "@id": "https://www.ru.nl/clst" }
+		}
+	],
+	"sourceOrganization": { "@id": "https://www.ru.nl/clst" },
+	"operatingSystem": "POSIX",
+	"codeRepository": "https://github.com/schemreier/frisianalign",
+    "softwareRequirements": [
+        {
+			"@type": "SoftwareApplication",
+			"identifier": "kaldi",
+			"name": "kaldi"
+		}
+	],
+	"readme": "https://github.com/schemreier/frisianalign/blob/master/README.md",
+	"issueTracker": "https://github.com/schemreier/frisianalign/issues",
+	"developmentStatus": "active",
+	"keywords":  [ "nlp", "speech recognition", "dutch" ],
+	"dateCreated": "2017-04-02"
+}
