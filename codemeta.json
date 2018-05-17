@@ -59,6 +59,6 @@
 	"readme": "https://github.com/schemreier/frisianalign/blob/master/README.md",
 	"issueTracker": "https://github.com/schemreier/frisianalign/issues",
 	"developmentStatus": "active",
-	"keywords":  [ "nlp", "speech recognition", "dutch" ],
+	"keywords":  [ "nlp", "speech recognition", "frisian" ],
 	"dateCreated": "2017-04-02"
 }
