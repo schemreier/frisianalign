@@ -31,7 +31,7 @@ import sys
 import os
 from base64 import b64decode as D
 
-REQUIRE_VERSION = 0.99
+REQUIRE_VERSION = 3.0
 
 CLAMDIR = clam.__path__[0] #directory where CLAM is installed, detected automatically
 WEBSERVICEDIR = os.path.dirname(os.path.abspath(__file__)) #directory where this webservice is installed, detected automatically
@@ -183,10 +183,11 @@ PROFILES = [
 #     $PARAMETERS      - List of chosen parameters, using the specified flags
 #
 # COMMAND = WEBSERVICEDIR + "/fame_align_wrapper.sh $DATAFILE $STATUSFILE $OUTPUTDIRECTORY"
-SCRATCHDIRECTORY=ROOT+'/scratch/' #note: this will be relative to the project directory for each clam project and created in the wrapper
-RESOURCEDIRECTORY=ROOT+'/resources/'
 #Or for the shell variant:
-COMMAND = WEBSERVICEDIR + "/fame_align_wrapper.sh $STATUSFILE $INPUTDIRECTORY $OUTPUTDIRECTORY " + SCRATCHDIRECTORY +" "+RESOURCEDIRECTORY +" "+ WEBSERVICEDIR
+
+COMMAND = WEBSERVICEDIR + "/fame_align_wrapper.sh $STATUSFILE $INPUTDIRECTORY $OUTPUTDIRECTORY " + SCRATCHDIRECTORY +" "+ RESOURCEDIRECTORY +" "+ WEBSERVICEDIR
+
+#Note: RESOURCEDIRECTORY and SCRATCHDIRECTORY are defined in the (host-specific) external configuration file (*.config.yml)
 
 #Or if you only use the action paradigm, set COMMAND = None
 
