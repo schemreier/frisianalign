@@ -8,9 +8,9 @@
         }
     ],
     "@type": "SoftwareSourceCode",
-    "identifier": "frisianalign",
-    "name": "Frisian Forced Alignment Demo",
-    "version": "0.1",
+    "identifier": "fame_align",
+    "name": "Frisian Forced Alignment",
+    "version": "0.2",
     "description": "This webservice provides you a ctm file with word alignments given a Frisian speech recording and its transcription.",
     "license": "unknown",
 	"url": "https://github.com/schemreier/frisianalign",

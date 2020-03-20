@@ -44,10 +44,20 @@ WEBSERVICEDIR = os.path.dirname(os.path.abspath(__file__)) #directory where this
 #The System ID, a short alphanumeric identifier for internal use only
 SYSTEM_ID = "fame_align"
 #System name, the way the system is presented to the world
-SYSTEM_NAME = "Frisian Forced Alignment Demo"
+SYSTEM_NAME = "Frisian Forced Alignment"
+
+SYSTEM_VERSION = "0.2"
 
 #An informative description for this system (this should be fairly short, about one paragraph, and may not contain HTML)
 SYSTEM_DESCRIPTION = "This webservice provides you a ctm file with word alignments given a Frisian speech recording and its transcription."
+
+SYSTEM_AUTHOR = "Emre Yilmaz, Maarten van Gompel"
+
+SYSTEM_AFFILIATION = "Centre for Language and Speech Technology, Radboud University"
+
+SYSTEM_URL = "https://github.com/schemreier/oralhistory"
+
+SYSTEM_EMAIL = "h.vandenheuvel@let.ru.nl"
 
 INTERFACEOPTIONS = "disableliveinput"
 
@@ -187,7 +197,7 @@ COMMAND = WEBSERVICEDIR + "/fame_align_wrapper.sh $STATUSFILE $INPUTDIRECTORY $O
 #are a list of instances from common/parameters.py
 
 PARAMETERS =  [
-    ('Group title', [
+    ('', [
         #BooleanParameter(id='createlexicon',name='Create Lexicon',description='Generate a separate overall lexicon?'),
         #ChoiceParameter(id='casesensitive',name='Case Sensitivity',description='Enable case sensitive behaviour?', choices=['yes','no'],default='no'),
         #StringParameter(id='author',name='Author',description='Sign output metadata with the specified author name',maxlength=255),
