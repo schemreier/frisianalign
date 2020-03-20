@@ -1,3 +1,4 @@
 root: "{{VIRTUAL_ENV}}/fame_align.clam"
-# root: "/vol/tensusers/eyilmaz/webservices/writable/fame_align"
+resourcedirectory: "/path/to/resources"
+scratchdirectory: "/tmp"
 port: 8802
